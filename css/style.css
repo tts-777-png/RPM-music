@@ -349,3 +349,37 @@ margin-left:0;
 }
 
 }
+/* --- FORÇAR MENU SANDUÍCHE EM TODOS OS ECRÃS --- */
+.navbar-expand-lg .navbar-toggler {
+    display: block !important; /* Mostra o botão sempre */
+}
+
+.navbar-expand-lg .navbar-collapse {
+    display: none !important; /* Esconde os links horizontais por padrão */
+}
+
+.navbar-expand-lg .navbar-collapse.show {
+    display: block !important; /* Mostra os links quando o menu é aberto */
+    background: rgba(0, 0, 0, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.navbar-nav {
+    flex-direction: column !important; /* Alinha os itens verticalmente */
+}
+
+.nav-link {
+    margin: 10px 0 !important;
+    font-size: 1.2rem !important;
+}
+
+/* Ajuste do botão para não ficar colado */
+.navbar-toggler {
+    border: none !important;
+    padding: 10px !important;
+}

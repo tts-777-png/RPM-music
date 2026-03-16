@@ -98,3 +98,14 @@ window.onscroll = function() {
 document.getElementById("backToTop").onclick = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
+
+// Fecha o menu sanduíche ao clicar em qualquer link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        const navbarCollapse = document.getElementById('navbarNav');
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+        if (navbarCollapse.classList.contains('show')) {
+            bsCollapse.hide();
+        }
+    });
+});
