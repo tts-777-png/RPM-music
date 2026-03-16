@@ -118,12 +118,21 @@ h1, h2, h4, .navbar-brand {
 
 /* TEXTO PRINCIPAL */
 
+/* --- AJUSTE FINAL PARA O TÍTULO --- */
 .hero-no-break {
     white-space: nowrap;
     display: inline-block;
-    max-width: 100%; /* Impede que o elemento seja maior que o pai */
-    overflow: hidden; /* Caso ainda sobre algo, ele esconde em vez de empurrar a tela */
-    text-overflow: ellipsis; /* Opcional: adiciona "..." se for muito pequeno, mas o clamp deve evitar isso */
+    /* Reduzi o valor ideal de 9.2vw para 8.8vw e o mínimo para 1.2rem */
+    font-size: clamp(1.2rem, 8.8vw, 7rem) !important;
+    max-width: 100%;
+    overflow: visible; /* Mudamos para visible para garantir que nada seja escondido se houver margem */
+}
+
+/* Ajuste específico para telas extremamente estreitas (como o seu exemplo) */
+@media (max-width: 380px) {
+    .hero-no-break {
+        font-size: 8.2vw !important; /* Força um encolhimento maior baseado na largura da tela */
+    }
 }
 
 .outline-text {
@@ -303,10 +312,7 @@ h1, h2, h4, .navbar-brand {
 font-size: clamp(2rem,10vw,3rem);
 }
 
-.hero-no-break{
-white-space: normal;
-font-size: clamp(2rem,9vw,3rem);
-}
+
 
 .section-title{
 font-size:1.8rem;
