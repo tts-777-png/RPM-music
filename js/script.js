@@ -85,3 +85,16 @@ window.onscroll = function() {
 document.getElementById("backToTop").onclick = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
+
+window.onscroll = function() {
+    const btn = document.getElementById("backToTop");
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+
+document.getElementById("backToTop").onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
