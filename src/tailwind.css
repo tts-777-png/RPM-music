@@ -139,8 +139,7 @@
 
   .metric-value {
     font-family: var(--font-display);
-    @apply mt-3 text-3xl uppercase tracking-[0.05em] text-white;
-    overflow-wrap: anywhere;
+    @apply mt-3 text-3xl uppercase tracking-[0.05em] text-white whitespace-nowrap;
   }
 
   .hero-visual {
