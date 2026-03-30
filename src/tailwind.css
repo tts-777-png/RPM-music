@@ -1,0 +1,408 @@
+@import "tailwindcss";
+
+@source "../index.html";
+@source "../planos.html";
+@source "../quem-somos.html";
+@source "../js/*.js";
+
+@theme {
+  --color-rpm-black: #050505;
+  --color-rpm-graphite: #111111;
+  --color-rpm-panel: #151515;
+  --color-rpm-panel-soft: rgba(255, 255, 255, 0.05);
+  --color-rpm-line: rgba(255, 255, 255, 0.12);
+  --color-rpm-copy: #f5f3ef;
+  --color-rpm-muted: #b8b5ab;
+  --color-rpm-acid: #d4ff35;
+  --color-rpm-acid-soft: rgba(212, 255, 53, 0.14);
+  --color-rpm-red: #d1462f;
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Archivo Narrow", sans-serif;
+  --shadow-rpm: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at top, rgba(212, 255, 53, 0.11), transparent 24rem),
+      linear-gradient(180deg, #090909 0%, #050505 100%);
+    color: var(--color-rpm-copy);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+    pointer-events: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  iframe {
+    border: 0;
+  }
+
+  ::selection {
+    background: var(--color-rpm-acid);
+    color: #111;
+  }
+}
+
+@layer components {
+  .site-shell {
+    @apply relative overflow-x-hidden;
+  }
+
+  .shell-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    min-width: 0;
+  }
+
+  .nav-surface {
+    @apply border-b border-rpm-line/60 bg-black/75 backdrop-blur-xl;
+  }
+
+  .nav-link {
+    @apply text-sm font-semibold uppercase tracking-[0.24em] text-rpm-muted transition duration-300 hover:text-white;
+  }
+
+  .nav-link-primary {
+    @apply inline-flex max-w-full items-center justify-center rounded-full border border-rpm-acid/70 bg-rpm-acid px-5 py-3 text-center text-sm font-extrabold uppercase tracking-[0.18em] text-black transition duration-300 hover:-translate-y-0.5 hover:bg-white;
+    white-space: normal;
+  }
+
+  .menu-panel {
+    @apply hidden border-t border-rpm-line bg-black/95;
+  }
+
+  .menu-panel.is-open {
+    @apply block;
+  }
+
+  .eyebrow {
+    @apply inline-flex max-w-full items-center gap-2 rounded-full border border-rpm-line bg-white/5 px-3 py-2 text-[0.7rem] font-bold uppercase tracking-[0.24em] text-rpm-muted;
+    white-space: normal;
+  }
+
+  .display-title {
+    font-family: var(--font-display);
+    @apply uppercase tracking-[0.06em] text-white;
+    overflow-wrap: anywhere;
+  }
+
+  .display-outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.92);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    @apply text-4xl uppercase tracking-[0.08em] text-white sm:text-5xl lg:text-6xl;
+    overflow-wrap: anywhere;
+  }
+
+  .section-copy {
+    @apply max-w-3xl text-base leading-8 text-rpm-muted sm:text-lg;
+  }
+
+  .panel-card {
+    @apply rounded-[2rem] border border-rpm-line bg-rpm-panel/80 shadow-rpm backdrop-blur-sm;
+  }
+
+  .accent-card {
+    @apply rounded-[2rem] border border-rpm-acid/30 bg-rpm-acid-soft shadow-rpm backdrop-blur-sm;
+  }
+
+  .metric-chip {
+    @apply rounded-3xl border border-rpm-line bg-white/5 px-4 py-4;
+  }
+
+  .metric-label {
+    @apply text-[0.68rem] font-bold uppercase tracking-[0.32em] text-rpm-muted;
+  }
+
+  .metric-value {
+    font-family: var(--font-display);
+    @apply mt-3 text-3xl uppercase tracking-[0.05em] text-white;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-visual {
+    background:
+      linear-gradient(160deg, rgba(212, 255, 53, 0.22), transparent 36%),
+      linear-gradient(20deg, rgba(209, 70, 47, 0.2), transparent 40%),
+      #111111;
+    @apply relative overflow-hidden rounded-[1.5rem] border border-rpm-line shadow-rpm sm:rounded-[2rem];
+  }
+
+  .media-stack {
+    @apply grid grid-cols-2 gap-3 sm:gap-4;
+  }
+
+  .media-tile {
+    @apply relative overflow-hidden rounded-[1.5rem] border border-rpm-line bg-black/60;
+  }
+
+  .media-tile img {
+    @apply h-full w-full object-cover transition duration-700 hover:scale-105;
+  }
+
+  .media-tile-featured {
+    @apply col-span-2;
+    aspect-ratio: 16 / 10;
+  }
+
+  .media-tile-secondary {
+    aspect-ratio: 1 / 1;
+  }
+
+  .artist-grid {
+    @apply grid gap-5 sm:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .artist-card {
+    @apply relative overflow-hidden rounded-[1.75rem] border border-rpm-line bg-white/5 transition duration-300 hover:-translate-y-1 hover:border-rpm-acid/50;
+    min-width: 0;
+  }
+
+  .artist-card img {
+    @apply aspect-[4/5] w-full bg-black/80 object-contain p-3 grayscale transition duration-500 sm:p-4;
+  }
+
+  .artist-card-body {
+    @apply flex items-end justify-between gap-4 p-5 sm:p-6;
+  }
+
+  .artist-name {
+    font-family: var(--font-display);
+    @apply text-[1.75rem] uppercase tracking-[0.06em] sm:text-3xl;
+    overflow-wrap: anywhere;
+  }
+
+  .artist-genre {
+    @apply mt-2 text-xs font-bold uppercase tracking-[0.28em] text-rpm-acid;
+  }
+
+  .artist-arrow {
+    @apply rounded-full border border-rpm-line p-3 text-rpm-muted transition duration-300;
+  }
+
+  .artist-card:hover img {
+    filter: grayscale(0);
+  }
+
+  .artist-card:hover .artist-arrow {
+    @apply border-rpm-acid text-rpm-acid;
+  }
+
+  .profile-section {
+    @apply border-t border-rpm-line/70 py-20 sm:py-24;
+  }
+
+  .profile-grid {
+    @apply grid items-center gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-10;
+  }
+
+  .profile-grid.reverse {
+    @apply lg:grid-cols-[1.28fr_0.72fr];
+  }
+
+  .profile-copy {
+    @apply flex flex-col gap-6;
+    min-width: 0;
+  }
+
+  .profile-title {
+    font-family: var(--font-display);
+    @apply text-5xl uppercase tracking-[0.08em] text-white sm:text-6xl;
+  }
+
+  .profile-subtitle {
+    @apply text-sm font-bold uppercase tracking-[0.32em] text-rpm-acid;
+  }
+
+  .profile-text {
+    @apply max-w-xl text-base leading-8 text-rpm-muted sm:text-lg;
+  }
+
+  .profile-media {
+    @apply relative overflow-hidden rounded-[1.5rem] border border-rpm-line bg-black shadow-rpm sm:rounded-[2rem];
+    min-width: 0;
+  }
+
+  .video-container {
+    @apply h-full w-full;
+  }
+
+  .video-shell {
+    @apply aspect-video w-full;
+    min-height: 21rem;
+  }
+
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .cta-button {
+    @apply inline-flex max-w-full items-center justify-center rounded-full border border-rpm-acid/70 bg-rpm-acid px-6 py-3 text-center text-sm font-extrabold uppercase tracking-[0.18em] text-black transition duration-300 hover:-translate-y-0.5 hover:bg-white;
+    white-space: normal;
+  }
+
+  .ghost-button {
+    @apply inline-flex max-w-full items-center justify-center rounded-full border border-rpm-line bg-transparent px-6 py-3 text-center text-sm font-bold uppercase tracking-[0.18em] text-white transition duration-300 hover:border-white hover:bg-white hover:text-black;
+    white-space: normal;
+  }
+
+  .floating-link {
+    @apply fixed bottom-5 left-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25d366] text-2xl text-black shadow-[0_12px_30px_rgba(0,0,0,0.4)] transition duration-300 hover:-translate-y-1;
+  }
+
+  .back-top {
+    @apply fixed bottom-5 right-5 z-50 hidden h-14 w-14 cursor-pointer items-center justify-center rounded-full border border-rpm-line bg-white/10 text-white backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-rpm-acid hover:text-rpm-acid;
+  }
+
+  .back-top.is-visible {
+    @apply inline-flex;
+  }
+
+  .price-grid {
+    @apply grid gap-6 xl:grid-cols-3;
+  }
+
+  .price-card {
+    @apply flex h-full flex-col rounded-[2rem] border border-rpm-line bg-rpm-panel/80 p-8 shadow-rpm;
+  }
+
+  .price-card.featured {
+    @apply border-rpm-acid/40 bg-rpm-acid-soft;
+  }
+
+  .price-name {
+    font-family: var(--font-display);
+    @apply text-4xl uppercase tracking-[0.08em] text-white;
+  }
+
+  .price-value {
+    font-family: var(--font-display);
+    @apply mt-5 text-5xl uppercase tracking-[0.04em] text-rpm-acid;
+  }
+
+  .price-list {
+    @apply mt-8 space-y-4 text-sm leading-7 text-rpm-copy/90 sm:text-base;
+  }
+
+  .tick {
+    @apply mr-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-rpm-acid text-xs font-black text-black;
+  }
+
+  .content-grid {
+    @apply grid gap-8 lg:grid-cols-[1.1fr_0.9fr];
+  }
+
+  .value-list {
+    @apply grid gap-4;
+  }
+
+  .value-item {
+    @apply rounded-[1.5rem] border border-rpm-line bg-white/5 p-6;
+  }
+
+  .value-title {
+    font-family: var(--font-display);
+    @apply text-2xl uppercase tracking-[0.08em] text-white;
+  }
+
+  .badge-line {
+    @apply inline-flex max-w-full rounded-full border border-rpm-line bg-white/5 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-rpm-muted;
+    white-space: normal;
+  }
+
+  .reveal {
+    @apply translate-y-6 opacity-0 transition duration-700 ease-out;
+  }
+
+  .reveal.is-visible {
+    @apply translate-y-0 opacity-100;
+  }
+}
+
+@media (max-width: 1023px) {
+  .profile-grid.reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .shell-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .video-shell {
+    min-height: 16rem;
+  }
+
+  .artist-card {
+    border-radius: 1.5rem;
+  }
+
+  .artist-card img {
+    aspect-ratio: 1 / 1;
+    padding: 0.75rem;
+  }
+
+  .media-tile {
+    border-radius: 1.25rem;
+  }
+
+  .media-tile-featured {
+    aspect-ratio: 16 / 11;
+  }
+
+  .display-title {
+    letter-spacing: 0.02em;
+  }
+
+  .section-title,
+  .profile-title {
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .media-stack {
+    gap: 1rem;
+  }
+
+  .media-tile-featured {
+    grid-column: auto;
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  .media-tile-secondary {
+    aspect-ratio: 4 / 3;
+  }
+
+  .video-shell {
+    min-height: 34rem;
+  }
+}

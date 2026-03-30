@@ -1,0 +1,29 @@
+{
+  "name": "rpm-music",
+  "version": "1.0.0",
+  "description": "Site institucional da RPM Music com build Tailwind para deploy na Netlify.",
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./css/style.css --minify",
+    "dev": "npx @tailwindcss/cli -i ./src/tailwind.css -o ./css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developer-lucassantos/RPM-music.git"
+  },
+  "keywords": [
+    "tailwindcss",
+    "netlify",
+    "static-site"
+  ],
+  "author": "RPM Music",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/developer-lucassantos/RPM-music/issues"
+  },
+  "homepage": "https://github.com/developer-lucassantos/RPM-music#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  }
+}
