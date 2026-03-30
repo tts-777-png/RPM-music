@@ -49,7 +49,7 @@ const revealObserver = new IntersectionObserver(
     { threshold: 0.15 }
 );
 
-document.querySelectorAll(".reveal").forEach((element) => {
+document.querySelectorAll(".reveal, .reveal-left, .reveal-right").forEach((element) => {
     revealObserver.observe(element);
 });
 

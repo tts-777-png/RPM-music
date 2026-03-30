@@ -341,6 +341,22 @@
   .reveal.is-visible {
     @apply translate-y-0 opacity-100;
   }
+
+  .reveal-left {
+    @apply opacity-0 transition duration-700 ease-out;
+    transform: translate3d(-42px, 0, 0);
+  }
+
+  .reveal-right {
+    @apply opacity-0 transition duration-700 ease-out;
+    transform: translate3d(42px, 0, 0);
+  }
+
+  .reveal-left.is-visible,
+  .reveal-right.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @media (max-width: 1023px) {
@@ -383,6 +399,11 @@
   .section-title,
   .profile-title {
     letter-spacing: 0.04em;
+  }
+
+  .reveal-left,
+  .reveal-right {
+    transform: translate3d(0, 24px, 0);
   }
 }
 
